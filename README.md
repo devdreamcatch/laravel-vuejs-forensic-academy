@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+# laravel-vuejs-forensic-academy
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -78,7 +80,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# laravel-vuejs-forensic-academy
-
->>>>>>> db2b5f27391a0f630dbedfd0fc60bf973f461f23
