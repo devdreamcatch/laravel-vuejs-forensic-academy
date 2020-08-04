@@ -54,13 +54,18 @@ const router = new Router({
         // PAGES
         // =============================================================================
               {
-                path: '/pages/login',
-                name: 'page-login',
+                path: '/login',
+                name: 'login',
                 component: () => import('@/views/pages/Login.vue')
               },
               {
-                path: '/pages/error-404',
-                name: 'page-error-404',
+                path: '/register',
+                name: 'register',
+                component: () => import('@/views/pages/Register.vue')
+              },
+              {
+                path: '/error-404',
+                name: 'error-404',
                 component: () => import('@/views/pages/Error404.vue')
               },
             ]
@@ -68,7 +73,7 @@ const router = new Router({
         // Redirect to 404 page, if no match found
         {
             path: '*',
-            redirect: '/pages/error-404'
+            redirect: '/error-404'
         }
     ],
 })
