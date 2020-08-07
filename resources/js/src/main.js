@@ -48,7 +48,11 @@ Vue.use(VueHammer)
 
 // VeeValidate
 import VeeValidate from 'vee-validate'
-Vue.use(VeeValidate);
+Vue.use(VeeValidate)
+
+
+// Multi translation
+import i18n from '@/plugins/i18n'
 
 
 // PrismJS
@@ -66,5 +70,6 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
