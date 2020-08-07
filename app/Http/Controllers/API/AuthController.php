@@ -8,14 +8,15 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
     /**
-     * Get token
-     * @param $request
-     * @return $jsonResponse
-     * @route('/api/token', method='POST')
+     * get token from user email and password
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getToken(Request $request)
     {
@@ -23,73 +24,54 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if ($validator->fails()) {
-            // $errors = $validator->errors()->all();
-            return response()->json([
-                'errors' => 'The provided fields are incorrect.'
-            ]);
-        }
 
         $user = User::where('email', "$request->email")->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'email' => 'The provided credentials are incorrect.'
-            ]);
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return new JsonResponse([
+                'error' => 'The provided credential is incorrect.'
+            ], 401);
         }
 
-        return response()->json([
+        return new JsonResponse([
             'token' => $user->createToken('forensic-academy-token', ['forensic:admin'])->plainTextToken,
-            'user' => [
-                'name' => $user->name,
-                'email' => $user->email,
-            ]
+            'user_info' => $user
         ]);
     }
 
     /**
-     * User register
-     * @param $request
-     * @return $jsonResponse
-     * @route('/api/register', method='POST')
+     * user register
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
-        try {
-            $validator = Validator::make($request->all(), [
-                'email' => 'required|email|unique:users',
-                'password' => 'required',
-                'name' => 'required',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191',
+            'surname' => 'required|string|max:191',
+            'cpf' => 'required|cpf',
+            'sex' => 'required|integer',
+            'date_of_birth' => 'required|date',
+            'telephone' => 'required|integer',
+            'whatsapp' => 'required',
+            'email' => 'required|same:email_confirmation|email|unique:users',
+            'password' => 'required|same:password_confirmation',
+        ]);
+        
+        $user = User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'cpf' => $request->cpf,
+            'sex' => $request->sex,
+            'date_of_birth' => $request->date_of_birth,
+            'telephone' => $request->telephone,
+            'whatsapp' => $request->whatsapp,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
 
-            if ($validator->fails()) {
-                $error_messages = $validator->errors()->messages();
-                $error_keys = array_keys($error_messages);
-                foreach ($error_keys as $error_key) {
-                    $error_result[$error_key] = $error_messages[$error_key];
-                }
-                return response()->json([
-                    'success' => false,
-                    'error' => $error_result
-                ]);
-            }
-
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password)
-            ]);
-
-            return response()->json([
-                'success' => true,
-                'message' => 'The user is registered successfully.'
-            ]);
-        } catch (Exception $error) {
-            return response()->json([
-                'success' => false,
-                'error' => $error_result
-            ]);
-        }
+        return new JsonResponse($user, 201);
     }
 
     /**

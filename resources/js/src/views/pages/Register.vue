@@ -14,21 +14,34 @@
 			<vx-card>
 				<div slot="no-body" class="full-page-bg-color">
 					<div class="vx-row no-gutter">
-						<div class="vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center">
-							<img src="@assets/images/pages/login.png" alt="register" class="mx-auto">
-						</div>
-						<div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center  d-theme-dark-bg">
+						<div class="vx-col sm:w-full md:w-full lg:w-full mx-auto self-center  d-theme-dark-bg">
 							<div class="px-8 pt-8 register-tabs-container">
-								<div class="vx-card__title mb-4">
-									<h4 class="mb-4">Create Account</h4>
-									<p>Fill the below form to create a new account.</p>
+								<div class="vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center">
+									<img class="mx-auto" src="@assets/images/pages/logo.png" alt="branding logo">
 								</div>
+								<div class="vx-card__title mb-4">
+									<h4 class="mb-4">{{ $t('register.create') }}</h4>
+								</div>
+								<vs-alert active="true" color="danger">
+									{{ $t('register.fill') }} <b>{{ $t('register.invices') }}</b> {{ $t('register.and') }}<b>{{ $t('register.certificaters') }}</b>.
+								</vs-alert>
 								<div class="clearfix">
+									<vs-row vs-w="12">
+										<vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-lg="2" vs-sm="4" vs-xs="12" >
+											vs-lg="2" vs-sm="4" vs-xs="12"
+										</vs-col>
+										<vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-lg="8" vs-sm="4" vs-xs="12">
+											vs-lg="8" vs-sm="4" vs-xs="12"
+										</vs-col>
+										<vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-lg="2" vs-sm="4" vs-xs="12">
+											vs-lg="2" vs-sm="4" vs-xs="12"
+										</vs-col>
+									</vs-row>
 									<vs-input
 										label-placeholder="Name"
 										name="displayName"
 										placeholder="Name"
-										class="w-full" />
+										class="" />
 									<span class="text-danger text-sm"></span>
 
 									<vs-input

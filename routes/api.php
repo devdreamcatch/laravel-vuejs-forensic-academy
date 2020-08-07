@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\JsonResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +19,16 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/token/require', function () {
-    return response()->json([
-        'success' => false,
+Route::GET('/token/require', function () {
+    return new JsonResponse([
         'error' => 'Your credential token is invalid.'
-    ]);
+    ], 401);
 })->name('token_require');
 
-Route::post('/token', 'API\AuthController@getToken');
-Route::post('/register', 'API\AuthController@register');
+Route::POST('/token', 'API\AuthController@getToken');
+Route::POST('/register', 'API\AuthController@register');
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::put('/profile/{user}', 'API\AuthController@updateProfile');
-    Route::get('/profile/{user}', 'API\AuthController@showProfile');
+    Route::PUT('/profile/{user}', 'API\AuthController@updateProfile');
+    Route::GET('/profile/{user}', 'API\AuthController@showProfile');
 }); 
