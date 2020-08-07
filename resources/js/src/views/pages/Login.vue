@@ -18,7 +18,7 @@
               <img src="@assets/images/pages/login.png" alt="login" class="mx-auto">
             </div>
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 d-theme-dark-bg">
-              <div class="p-8 login-tabs-container">
+              <div class="p-8">
                 <div class="vx-card__title mb-4">
                   <h4 class="mb-4">{{ $t('global.login') }}</h4>
                   <p class="px-2 text-center">
