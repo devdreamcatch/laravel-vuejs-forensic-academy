@@ -1,0 +1,19 @@
+{
+	"global": {
+		"login": "Login",
+		"signup": "Sign up",
+		"register": "Register",
+		"email": "E-mail",
+		"password": "Password"
+	},
+
+	"login": {
+		"welcome": "Welcome, enter your",
+		"and": "and",
+		"or": "Or",
+		"below": "below",
+		"remember me": "Remember Me",
+		"forgot password": "Forgot Password?",
+		"bar_or": "OR"
+	}
+}
