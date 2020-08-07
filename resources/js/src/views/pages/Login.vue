@@ -20,8 +20,9 @@
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 d-theme-dark-bg">
               <div class="p-8 login-tabs-container">
                 <div class="vx-card__title mb-4">
-                  <h4 class="mb-4">Login</h4>
-                  <p class="px-2 text-center">Welcome, enter your <b>E-mail</b> and <b>Password</b> . <br>Or <b>Sign up</b> below.
+                  <h4 class="mb-4">{{ $t('global.login') }}</h4>
+                  <p class="px-2 text-center">
+                    {{ $t('login.welcome') }} <b>{{ $t('global.email') }}</b> {{ $t('login.and') }} <b>{{ $t('global.password') }}</b> . <b>{{ $t('global.signup') }}</b> {{ $t('login.below') }} 
                   </p>
                 </div>
                 <div>
@@ -32,7 +33,7 @@
                     icon-no-border
                     icon="icon icon-user"
                     icon-pack="feather"
-                    label-placeholder="Email"
+                    v-bind:label-placeholder="$t('global.email')"
                     v-model="email"
                     class="w-full"/>
                   <span class="text-danger text-sm">{{ errors.first('email') }}</span>
@@ -45,18 +46,18 @@
                     icon-no-border
                     icon="icon icon-lock"
                     icon-pack="feather"
-                    label-placeholder="Password"
+                    v-bind:label-placeholder="$t('global.password')"
                     v-model="password"
                     class="w-full mt-6" />
                   <span class="text-danger text-sm">{{ errors.first('password') }}</span>
 
                   <div class="flex flex-wrap justify-between my-5">
-                    <vs-checkbox v-model="checkbox_remember_me" class="mb-3">Remember Me</vs-checkbox>
-                    <router-link to="">Forgot Password?</router-link>
+                    <vs-checkbox v-model="checkbox_remember_me" class="mb-3">{{ $t('login.remember me') }}</vs-checkbox>
+                    <router-link to="">{{ $t('login.forgot password') }}</router-link>
                   </div>
-                  <vs-button to="/register" type="border">Register</vs-button>
-                  <vs-button class="float-right">Login</vs-button>
-                  <vs-divider>OR</vs-divider>
+                  <vs-button to="/register" type="border">{{ $t('global.register') }}</vs-button>
+                  <vs-button class="float-right">{{ $t('global.login') }}</vs-button>
+                  <vs-divider>{{ $t('login.bar_or') }}</vs-divider>
                   <div class="social-login-buttons flex flex-wrap items-center mt-4">
                     <!-- facebook -->
                     <div class="bg-facebook pt-3 pb-2 px-4 rounded-lg cursor-pointer mr-4">
@@ -78,6 +79,8 @@
 </template>
 
 <script>
+import i18n from '@/plugins/i18n'
+
 export default{
   data() {
     return {
@@ -107,3 +110,11 @@ export default{
   }
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "hello": "Hello i18n in SFC!"
+  }
+}
+</i18n>
