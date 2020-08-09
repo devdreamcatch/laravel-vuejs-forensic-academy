@@ -40,6 +40,19 @@ class AuthController extends Controller
     }
 
     /**
+     * logout, token remove
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return new JsonResponse();
+    }
+
+    /**
      * user register
      * @param \Illuminate\Http\Request $request
      *

@@ -29,6 +29,7 @@ Route::POST('/token', 'API\AuthController@getToken');
 Route::POST('/register', 'API\AuthController@register');
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::POST('/logout', 'API\AuthController@logout');
     Route::PUT('/profile/{user}', 'API\AuthController@updateProfile');
     Route::GET('/profile/{user}', 'API\AuthController@showProfile');
 }); 
