@@ -46,7 +46,7 @@ import { VueHammer } from 'vue2-hammer'
 Vue.use(VueHammer)
 
 
-// VeeValidate
+// VeeValidat
 import VeeValidate from 'vee-validate'
 Vue.use(VeeValidate)
 
