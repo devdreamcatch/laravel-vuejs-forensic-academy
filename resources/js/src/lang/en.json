@@ -16,7 +16,8 @@
             "login": "Login",
             "signup": "Sign up",
             "register": "Register"
-        } 
+        },
+        "error": "Error"
     },
 
     "login": {
@@ -26,7 +27,9 @@
         "below": "below",
         "remember me": "Remember Me",
         "forgot password": "Forgot Password?",
-        "bar_or": "OR"
+        "bar_or": "OR",
+        "already_login": "You are already logged in!",
+        "attempt_title": "Login Attempt"
     },
 
     "register": {
@@ -36,4 +39,6 @@
         "and": "and their",
         "certificaters": "Certificates of Participation"
     }
+
+
 }

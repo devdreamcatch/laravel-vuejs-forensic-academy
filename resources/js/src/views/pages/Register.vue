@@ -68,7 +68,7 @@
 
 <script>
 export default {
-	
+
 }
 </script>
 
