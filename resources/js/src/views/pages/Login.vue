@@ -80,9 +80,6 @@
 </template>
 
 <script>
-import i18n from '@/plugins/i18n'
-import axios from 'axios'
-
 export default{
   data() {
     return {
@@ -107,11 +104,11 @@ export default{
         // this.$vs.loading.close()
 
         this.$vs.notify({
-        title: $t('login.attempt_title'),
-        text: $t('login.already_login'),
-        iconPack: 'feather',
-        icon: 'icon-alert-circle',
-        color: 'warning'
+          title: $t('login.attempt_title'),
+          text: $t('login.already_login'),
+          iconPack: 'feather',
+          icon: 'icon-alert-circle',
+          color: 'warning'
         })
         return false
       }
