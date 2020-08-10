@@ -22,7 +22,7 @@
                 <div class="vx-card__title mb-4">
                   <h4 class="mb-4">{{ $t('global.login') }}</h4>
                   <p class="px-2 text-center">
-                    {{ $t('login.welcome') }} <b>{{ $t('global.email') }}</b> {{ $t('login.and') }} <b>{{ $t('global.password') }}</b> . <b>{{ $t('global.signup') }}</b> {{ $t('login.below') }}
+                    {{ $t('login.welcome') }} <b>{{ $t('global.field.email') }}</b> {{ $t('login.and') }} <b>{{ $t('global.field.password') }}</b> . <b>{{ $t('global.field.signup') }}</b> {{ $t('login.below') }}
                   </p>
                 </div>
                 <div>
@@ -33,7 +33,7 @@
                     icon-no-border
                     icon="icon icon-user"
                     icon-pack="feather"
-                    v-bind:label-placeholder="$t('global.email')"
+                    v-bind:label-placeholder="$t('global.field.email')"
                     v-model="email"
                     class="w-full"/>
                   <span class="text-danger text-sm">{{ errors.first('email') }}</span>
@@ -46,7 +46,7 @@
                     icon-no-border
                     icon="icon icon-lock"
                     icon-pack="feather"
-                    v-bind:label-placeholder="$t('global.password')"
+                    v-bind:label-placeholder="$t('global.field.password')"
                     @keyup.enter="login"
                     v-model="password"
                     class="w-full mt-6" />
@@ -56,8 +56,8 @@
                     <vs-checkbox v-model="checkbox_remember_me" class="mb-3">{{ $t('login.remember me') }}</vs-checkbox>
                     <router-link to="">{{ $t('login.forgot password') }}</router-link>
                   </div>
-                  <vs-button to="/register" type="border">{{ $t('global.register') }}</vs-button>
-                  <vs-button class="float-right" @click="login" :disabled="!validateForm">{{ $t('global.login') }}</vs-button>
+                  <vs-button to="/register" type="border">{{ $t('global.field.register') }}</vs-button>
+                  <vs-button class="float-right" @click="login" :disabled="!validateForm">{{ $t('global.field.login') }}</vs-button>
                   <vs-divider>{{ $t('login.bar_or') }}</vs-divider>
                   <div class="social-login-buttons flex flex-wrap items-center mt-4">
                     <!-- facebook -->
@@ -99,54 +99,51 @@ export default{
   },
 
   methods: {
-        checkLogin () {
-            // If user is already logged in notify
-            if (this.$store.state.auth.isUserLoggedIn()) {
+    checkLogin () {
+      // If user is already logged in notify
+      if (this.$store.state.auth.isUserLoggedIn()) {
 
-                // Close animation if passed as payload
-                // this.$vs.loading.close()
+        // Close animation if passed as payload
+        // this.$vs.loading.close()
 
-                this.$vs.notify({
-                title: $t('login.attempt_title'),
-                text: $t('login.already_login'),
-                iconPack: 'feather',
-                icon: 'icon-alert-circle',
-                color: 'warning'
-                })
+        this.$vs.notify({
+        title: $t('login.attempt_title'),
+        text: $t('login.already_login'),
+        iconPack: 'feather',
+        icon: 'icon-alert-circle',
+        color: 'warning'
+        })
+        return false
+      }
+      return true
+    },
+    login () {
+      if (!this.checkLogin()) return
 
-                return false
-            }
-            return true
-        },
-        login () {
+      // Loading
+      this.$vs.loading()
+      const payload = {
+        checkbox_remember_me: this.checkbox_remember_me,
+        userDetails: {
+        email: this.email,
+        password: this.password
+        }
+      }
 
-            if (!this.checkLogin()) return
-
-            // Loading
-            this.$vs.loading()
-
-            const payload = {
-                checkbox_remember_me: this.checkbox_remember_me,
-                userDetails: {
-                email: this.email,
-                password: this.password
-                }
-            }
-
-            this.$store.dispatch('auth/loginJWT', payload)
-                .then(() => { this.$vs.loading.close() })
-                .catch(error => {
-                this.$vs.loading.close()
-                this.$vs.notify({
-                    title: $t('global.error'),
-                    text: error.message,
-                    iconPack: 'feather',
-                    icon: 'icon-alert-circle',
-                    color: 'danger'
-                })
-            })
-        },
+      this.$store.dispatch('auth/loginJWT', payload)
+        .then(() => { this.$vs.loading.close() })
+        .catch(error => {
+        this.$vs.loading.close()
+        this.$vs.notify({
+          title: $t('global.error'),
+          text: error.message,
+          iconPack: 'feather',
+          icon: 'icon-alert-circle',
+          color: 'danger'
+        })
+      })
     }
+  }
 }
 </script>
 
@@ -160,11 +157,3 @@ export default{
   }
 }
 </style>
-
-<i18n>
-{
-  "en": {
-    "hello": "Hello i18n in SFC!"
-  }
-}
-</i18n>
