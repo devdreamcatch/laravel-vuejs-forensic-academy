@@ -1,10 +1,22 @@
 {
     "global": {
-        "login": "Login",
-        "signup": "Sign up",
-        "register": "Register",
-        "email": "E-mail",
-        "password": "Password",
+        "field": {
+            "name": "Name",
+            "surname": "Surname",
+            "cpf": "CPF",
+            "sex": "Sex",
+            "date_of_birth": "Date of birth",
+            "telephone": "Telephone",
+            "whatsapp": "Whatsapp",
+            "email": "E-mail",
+            "confirn_email": "Confirm E-mail",
+            "password": "Password",
+            "create_password": "Create a password",
+            "confirm_password": "Confirm your password",
+            "login": "Login",
+            "signup": "Sign up",
+            "register": "Register"
+        },
         "error": "Error"
     },
 
