@@ -44,19 +44,28 @@ export default {
       return Promise.reject(error)
     })
   },
+  
   login (email, pwd) {
     return axios.post('/api/token', {
       email,
       password: pwd
     })
   },
-  registerUser (name, email, pwd) {
-    return axios.post('/api/auth/register', {
-      displayName: name,
-      email,
-      password: pwd
+
+  registerUser (name, surname, cpf, sex, dateOfBirth, telephone, whatsapp, email, password) {
+    return axios.post('/api/register', {
+      name: name,
+      surname: surname,
+      cpf: cpf,
+      sex: sex,
+      date_of_birth: dateOfBirth,
+      telephone: telephone,
+      whatsapp: whatsapp,
+      email: email,
+      password: password
     })
   },
+
   refreshToken () {
     return axios.post('/api/auth/refresh-token', {accessToken: localStorage.getItem('accessToKen')})
   }

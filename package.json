@@ -53,6 +53,7 @@
         "vue-simple-calendar": "^4.2.2",
         "vue-simple-suggest": "^1.9.5",
         "vue-star-rating": "^1.6.1",
+        "vue-the-mask": "^0.11.1",
         "vue-tour": "^1.1.0",
         "vue-video-player": "^5.0.2",
         "vue2-google-maps": "^0.10.6",

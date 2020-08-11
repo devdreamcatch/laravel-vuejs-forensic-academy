@@ -271,17 +271,10 @@ export default {
     })
   },
   registerUserJWT ({ commit }, payload) {
-
-    const { displayName, email, password, confirmPassword } = payload.userDetails
+    const { name, surname, cpf, sex, dateOfBirth, telephone, whatsapp, email, password } = payload.userDetails
 
     return new Promise((resolve, reject) => {
-
-      // Check confirm password
-      if (password !== confirmPassword) {
-        reject({message: 'Password doesn\'t match. Please try again.'})
-      }
-
-      jwt.registerUser(displayName, email, password)
+      jwt.registerUser(name, surname, cpf, sex, dateOfBirth, telephone, whatsapp, email, password)
         .then(response => {
           // Redirect User
           router.push(router.currentRoute.query.to || '/')

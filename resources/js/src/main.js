@@ -54,6 +54,9 @@ Vue.use(VeeValidate)
 // Multi translation
 import i18n from '@/plugins/i18n'
 
+// Vue mask
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
 
 // PrismJS
 import 'prismjs'

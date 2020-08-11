@@ -28,9 +28,7 @@ class AuthController extends Controller
         $user = User::where('email', "$request->email")->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return new JsonResponse([
-                'error' => 'The provided credential is incorrect.'
-            ], 401);
+            return new JsonResponse(null, 401);
         }
 
         return new JsonResponse([
@@ -61,16 +59,20 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:191',
-            'surname' => 'required|string|max:191',
-            'cpf' => 'required|cpf',
-            'sex' => 'required|integer',
-            'date_of_birth' => 'required|date',
-            'telephone' => 'required|integer',
-            'whatsapp' => 'required',
-            'email' => 'required|same:email_confirmation|email|unique:users',
-            'password' => 'required|same:password_confirmation',
+            // 'name' => 'required|string|max:191',
+            // 'surname' => 'required|string|max:191',
+            // 'cpf' => 'required',
+            // 'sex' => 'required|integer',
+            // 'date_of_birth' => 'required|date',
+            // 'telephone' => 'required',
+            // 'whatsapp' => 'required',
+            'email' => 'required|email|unique:users',
+            // 'password' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return new JsonResponse($validator->errors(), 422);
+        }
         
         $user = User::create([
             'name' => $request->name,

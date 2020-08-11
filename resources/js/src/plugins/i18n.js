@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-import enMessages from '../lang/en.json'
-import esMessages from '../lang/es.json'
-import ptMessages from '../lang/pt.json'
+import enMessages from '../lang/en'
+import esMessages from '../lang/es'
+import ptMessages from '../lang/pt'
 
 Vue.use(VueI18n)
 
