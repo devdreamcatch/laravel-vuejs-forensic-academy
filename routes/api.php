@@ -20,9 +20,7 @@ use Illuminate\Http\JsonResponse;
 // });
 
 Route::GET('/token/require', function () {
-    return new JsonResponse([
-        'error' => 'Your credential token is invalid.'
-    ], 401);
+    return new JsonResponse(401);
 })->name('token_require');
 
 Route::POST('/token', 'API\AuthController@getToken');
