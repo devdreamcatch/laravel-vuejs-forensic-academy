@@ -20,9 +20,9 @@
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 d-theme-dark-bg">
               <div class="p-8">
                 <div class="vx-card__title mb-4">
-                  <h4 class="mb-4">{{ $t('global.field.login') }}</h4>
+                  <h4 class="mb-4">{{ $t('global.field.Login') }}</h4>
                   <p class="px-2 text-center">
-                    {{ $t('login.welcome') }} <b>{{ $t('global.field.email') }}</b> {{ $t('login.and') }} <b>{{ $t('global.field.password') }}</b> . <b>{{ $t('global.field.signup') }}</b> {{ $t('login.below') }}
+                    {{ $t('login.welcome') }} <b>{{ $t('global.field.Email') }}</b> {{ $t('login.and') }} <b>{{ $t('global.field.Password') }}</b> . <b>{{ $t('global.field.Signup') }}</b> {{ $t('login.below') }}
                   </p>
                 </div>
                 <div>
@@ -33,7 +33,7 @@
                     icon-no-border
                     icon="icon icon-user"
                     icon-pack="feather"
-                    v-bind:label-placeholder="$t('global.field.email')"
+                    v-bind:label-placeholder="$t('global.field.Email')"
                     v-model="email"
                     class="w-full"/>
                   <span class="text-danger text-sm">{{ errors.first('email') }}</span>
@@ -46,19 +46,19 @@
                     icon-no-border
                     icon="icon icon-lock"
                     icon-pack="feather"
-                    v-bind:label-placeholder="$t('global.field.password')"
+                    v-bind:label-placeholder="$t('global.field.Password')"
                     @keyup.enter="login"
                     v-model="password"
                     class="w-full mt-6" />
                   <span class="text-danger text-sm">{{ errors.first('password') }}</span>
 
                   <div class="flex flex-wrap justify-between my-5">
-                    <vs-checkbox v-model="checkbox_remember_me" class="mb-3">{{ $t('login.remember me') }}</vs-checkbox>
-                    <router-link to="">{{ $t('login.forgot password') }}</router-link>
+                    <vs-checkbox v-model="checkbox_remember_me" class="mb-3">{{ $t('login.RememberMe') }}</vs-checkbox>
+                    <router-link to="">{{ $t('login.ForgotPassword') }}</router-link>
                   </div>
-                  <vs-button to="/register" type="border">{{ $t('global.field.register') }}</vs-button>
-                  <vs-button class="float-right" @click="login" :disabled="!validateForm">{{ $t('global.field.login') }}</vs-button>
-                  <vs-divider>{{ $t('login.bar_or') }}</vs-divider>
+                  <vs-button to="/register" type="border">{{ $t('global.field.Register') }}</vs-button>
+                  <vs-button class="float-right" @click="login" :disabled="!validateForm">{{ $t('global.field.Login') }}</vs-button>
+                  <vs-divider>{{ $t('login.OR') }}</vs-divider>
                   <div class="social-login-buttons flex flex-wrap items-center mt-4">
                     <!-- facebook -->
                     <div class="bg-facebook pt-3 pb-2 px-4 rounded-lg cursor-pointer mr-4">
@@ -81,7 +81,7 @@
 
 <script>
 export default{
-  data() {
+  data () {
     return {
       email: "",
       password: "",
@@ -99,13 +99,12 @@ export default{
     checkLogin () {
       // If user is already logged in notify
       if (this.$store.state.auth.isUserLoggedIn()) {
-
         // Close animation if passed as payload
         // this.$vs.loading.close()
 
         this.$vs.notify({
-          title: $t('login.attempt_title'),
-          text: $t('login.already_login'),
+          title: this.$t('login.attempt_title'),
+          text: this.$t('login.already_login'),
           iconPack: 'feather',
           icon: 'icon-alert-circle',
           color: 'warning'
@@ -114,6 +113,7 @@ export default{
       }
       return true
     },
+
     login () {
       if (!this.checkLogin()) return
       // Loading
@@ -121,8 +121,8 @@ export default{
       const payload = {
         checkbox_remember_me: this.checkbox_remember_me,
         userDetails: {
-        email: this.email,
-        password: this.password
+          email: this.email,
+          password: this.password
         }
       }
 
@@ -133,15 +133,15 @@ export default{
         
         if (error.response.status === 401) {
           this.$vs.notify({
-            title: this.$t('global.error'),
-            text: this.$t('error.creditional'),
+            title: this.$t('global.Error'),
+            text: this.$t('message.creditional'),
             iconPack: 'feather',
             icon: 'icon-alert-circle',
             color: 'danger'
           })
         } else {
-          this.$v.notify({
-            title: this.$t('global.error'),
+          this.$vs.notify({
+            title: this.$t('global.Error'),
             text: error.message,
             iconPack: 'feather',
             icon: 'icon-alert-circle',
