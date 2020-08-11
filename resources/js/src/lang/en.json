@@ -1,23 +1,31 @@
 {
     "global": {
         "field": {
-            "name": "Name",
-            "surname": "Surname",
-            "cpf": "CPF",
-            "sex": "Sex",
-            "date_of_birth": "Date of birth",
-            "telephone": "Telephone",
-            "whatsapp": "Whatsapp",
-            "email": "E-mail",
-            "confirn_email": "Confirm E-mail",
-            "password": "Password",
-            "create_password": "Create a password",
-            "confirm_password": "Confirm your password",
-            "login": "Login",
-            "signup": "Sign up",
-            "register": "Register"
+            "Name": "Name",
+            "Surname": "Surname",
+            "CPF": "CPF",
+            "Sex": "Sex",
+            "DateOfBirth": "Date of birth",
+            "Telephone": "Telephone",
+            "Whatsapp": "Whatsapp",
+            "Email": "E-mail",
+            "EmailConfirmation": "Confirm E-mail",
+            "Password": "Password",
+            "CreatePassword": "Create a password",
+            "PasswordConfirmation": "Confirm your password",
+            "Login": "Login",
+            "Signup": "Sign up",
+            "Register": "Register",
+            "Male": "Male",
+            "Female": "Female",
+            "Other": "Other"
         },
-        "error": "Error"
+        "Error": "Error"
+    },
+
+    "message": {
+        "creditional": "The provided credential is incorrect.",
+        "emailAlreadyTaken": "The email has already registered."
     },
 
     "login": {
@@ -25,9 +33,9 @@
         "and": "and",
         "or": "Or",
         "below": "below",
-        "remember me": "Remember Me",
-        "forgot password": "Forgot Password?",
-        "bar_or": "OR",
+        "RememberMe": "Remember Me",
+        "ForgotPassword": "Forgot Password?",
+        "OR": "OR",
         "already_login": "You are already logged in!",
         "attempt_title": "Login Attempt"
     },
@@ -37,7 +45,9 @@
         "fill": "Fill in your details carefully, the Forensic Academy uses this information to issue their",
         "invoices": "invoices",
         "and": "and their",
-        "certificaters": "Certificates of Participation"
+        "certificaters": "Certificates of Participation",
+        "view_contract": "View Contract",
+        "acceptCondition": "I have read and agree to the Agreement Terms."
     }
 
 
