@@ -20,7 +20,7 @@
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 d-theme-dark-bg">
               <div class="p-8">
                 <div class="vx-card__title mb-4">
-                  <h4 class="mb-4">{{ $t('global.login') }}</h4>
+                  <h4 class="mb-4">{{ $t('global.field.login') }}</h4>
                   <p class="px-2 text-center">
                     {{ $t('login.welcome') }} <b>{{ $t('global.field.email') }}</b> {{ $t('login.and') }} <b>{{ $t('global.field.password') }}</b> . <b>{{ $t('global.field.signup') }}</b> {{ $t('login.below') }}
                   </p>
@@ -116,7 +116,6 @@ export default{
     },
     login () {
       if (!this.checkLogin()) return
-
       // Loading
       this.$vs.loading()
       const payload = {
@@ -131,13 +130,24 @@ export default{
         .then(() => { this.$vs.loading.close() })
         .catch(error => {
         this.$vs.loading.close()
-        this.$vs.notify({
-          title: $t('global.error'),
-          text: error.message,
-          iconPack: 'feather',
-          icon: 'icon-alert-circle',
-          color: 'danger'
-        })
+        
+        if (error.response.status === 401) {
+          this.$vs.notify({
+            title: this.$t('global.error'),
+            text: this.$t('error.creditional'),
+            iconPack: 'feather',
+            icon: 'icon-alert-circle',
+            color: 'danger'
+          })
+        } else {
+          this.$v.notify({
+            title: this.$t('global.error'),
+            text: error.message,
+            iconPack: 'feather',
+            icon: 'icon-alert-circle',
+            color: 'danger'
+          })
+        }
       })
     }
   }
