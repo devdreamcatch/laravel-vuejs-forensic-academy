@@ -127,10 +127,12 @@ export default{
       }
 
       this.$store.dispatch('auth/loginJWT', payload)
-        .then(() => { this.$vs.loading.close() })
+        .then(() => {
+            this.$vs.loading.close()
+        })
         .catch(error => {
         this.$vs.loading.close()
-        
+
         if (error.response.status === 401) {
           this.$vs.notify({
             title: this.$t('global.Error'),
