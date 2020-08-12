@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
 
-    <title>Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template</title>
+    <title>{{ env('APP_NAME', 'Forensic Academy') }}</title>
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset(mix('css/main.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('css/iconfont.css')) }}">
