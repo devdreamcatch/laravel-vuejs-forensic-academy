@@ -40,7 +40,7 @@ class AuthController extends Controller
     /**
      * logout, token remove
      * @param \Illuminate\Http\Request $request
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout(Request $request)
@@ -73,7 +73,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return new JsonResponse($validator->errors(), 422);
         }
-        
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -110,7 +110,7 @@ class AuthController extends Controller
                 'password' => 'required',
                 'name' => 'required',
             ]);
-    
+
             if ($validator->fails()) {
                 $error_messages = $validator->errors()->messages();
                 $error_keys = array_keys($error_messages);
@@ -122,12 +122,12 @@ class AuthController extends Controller
                     'error' => $error_result
                 ]);
             }
-    
+
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();
-    
+
             return response()->json([
                 'success' => true,
                 'message' => 'The profile is updated successfully.'
