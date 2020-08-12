@@ -250,7 +250,6 @@ export default {
           // If there's user data in response
           if (response.data.user_info) {
             // Navigate User to homepage
-            router.push(router.currentRoute.query.to || '/')
 
             // Set accessToken
             localStorage.setItem('accessToken', response.data.token)
@@ -259,8 +258,9 @@ export default {
             commit('UPDATE_USER_INFO', response.data.user_info, {root: true})
 
             // Set bearer token in axios
-            commit('SET_BEARER', response.data.token)
+            commit('SET_BEARER', response.data.token);
 
+            router.push(router.currentRoute.query.to || '/').catch(()=>{});
             resolve(response)
           } else {
             reject({message: 'Wrong Email or Password'})
@@ -268,6 +268,20 @@ export default {
 
         })
         .catch(error => { reject(error) })
+    })
+  },
+
+  // JWT
+  logoutJWT ({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      jwt.logout()
+        .then(response => {
+            localStorage.removeItem('accessToken')
+            localStorage.removeItem('userInfo')
+            router.push('/login').catch(() => {});
+            resolve(response);
+        })
+        .catch(error => { reject(error) });
     })
   },
   registerUserJWT ({ commit }, payload) {
