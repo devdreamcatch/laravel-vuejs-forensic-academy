@@ -44,11 +44,16 @@ export default {
       return Promise.reject(error)
     })
   },
-  
+
   login (email, pwd) {
     return axios.post('/api/token', {
       email,
       password: pwd
+    })
+  },
+
+  logout (email, pwd) {
+    return axios.post('/api/logout', {
     })
   },
 
