@@ -1,14 +1,3 @@
-<!-- =========================================================================================
-  File Name: TheNavbar.vue
-  Description: Navbar component
-  Component Name: TheNavbar
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
-
 <template>
   <div class="relative">
 
@@ -22,6 +11,8 @@
         <bookmarks :navbarColor="navbarColor" v-if="windowWidth >= 992" />
 
         <vs-spacer />
+
+        <i18n />
 
         <search-bar class="mr-4" />
 
@@ -40,6 +31,7 @@ import Bookmarks            from './components/Bookmarks.vue'
 import SearchBar            from './components/SearchBar.vue'
 import NotificationDropDown from './components/NotificationDropDown.vue'
 import ProfileDropDown      from './components/ProfileDropDown.vue'
+import I18n                 from './components/I18n.vue'
 
 export default {
   name: 'the-navbar-vertical',
@@ -52,6 +44,7 @@ export default {
   components: {
     Bookmarks,
     SearchBar,
+      I18n,
     NotificationDropDown,
     ProfileDropDown
   },
