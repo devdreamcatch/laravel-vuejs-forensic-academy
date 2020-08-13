@@ -281,7 +281,10 @@ export default {
             router.push('/login').catch(() => {});
             resolve(response);
         })
-        .catch(error => { reject(error) });
+        .catch(error => {
+            router.push('/login').catch(() => {});
+            reject(error)
+        });
     })
   },
   registerUserJWT ({ commit }, payload) {
