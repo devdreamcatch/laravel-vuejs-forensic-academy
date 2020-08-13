@@ -48,6 +48,10 @@
         "certificaters": "Certificates of Participation",
         "view_contract": "View Contract",
         "acceptCondition": "I have read and agree to the Agreement Terms."
+    },
+
+    "home": {
+        "title": "Home"
     }
 
 
