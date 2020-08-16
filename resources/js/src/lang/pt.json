@@ -1,10 +1,112 @@
 {
-	"global": {
-		"login": "Login",
-		"email": "E-mail",
-		"siginup": "Sign up"
-	},
+    "global": {
+        "field": {
+            "Name": "Nome",
+            "Surname": "Sobrenome",
+            "CPF": "CPF",
+            "Sex": "Sexo",
+            "DateOfBirth": "Data de Nascimento",
+            "Telephone": "Telefone",
+            "Whatsapp": "WhatsApp",
+            "Email": "E-mail",
+            "EmailConfirmation": "Confirme o e-mail",
+            "Password": "Senha",
+            "CreatePassword": "Confirme sua senha",
+            "PasswordConfirmation": "Confirme sua senha",
+            "Login": "Entrar",
+            "Signup": "Cadastre-se",
+            "Register": "Cadastre-se",
+            "Male": "Masculino",
+            "Female": "Feminino",
+            "Other": "Outro"
+        },
+        "Error": "Error"
+    },
+
+    "message": {
+        "creditional": "A credencial fornecida está incorreta.",
+        "emailAlreadyTaken": "O email já está cadastrado."
+    },
+
+    "login": {
+        "welcome": "Bem vindo, digite seu",
+        "and": "e",
+        "or": "Ou",
+        "below": "logo abaixo",
+        "RememberMe": "Lembrar-me",
+        "ForgotPassword": "Esqueceu a senha??",
+        "OR": "OU",
+        "already_login": "You are already logged in!",
+        "attempt_title": "Login Attempt"
+    },
+
+    "register": {
+        "create": "Crie sua conta",
+        "fill": "Preencha seus dados com muita atenção, a Academia Forense utiliza estas informações para a emissão de suas",
+        "invoices": "Notas Fiscais",
+        "and": "e seus",
+        "certificaters": "Certificados de Participação",
+        "view_contract": "Vizualizar Contrato",
+        "acceptCondition": "Li e concordo com os Termos do Contrato."
+    },
     "home": {
-        "title": "HomePT"
+        "title": "Inicio"
+    },
+    "my_data": {
+        "title": "Meus Dados"
+    },
+    "menu": {
+        "title": "Menu"
+    },
+    "classrooms": {
+        "title": "Salas de Aula",
+        "active": {
+          "title": "Salas Ativas"
+        },
+        "completed": {
+          "title": "Salas Concluídas"
+        }
+    },
+    "my_certificates": {
+        "title": "Meus Certificados"
+    },
+    "chat": {
+        "title": "Chat"
+    },
+    "post": {
+        "title": "Mensagens"
+    },
+    "deposition": {
+        "title": "Depoimentos"
+    },
+    "financial": {
+        "title": "Financeiro",
+        "bill": {
+            "title": "Faturas"
+        },
+        "invoice": {
+            "title": "Notas Fiscais"
+        }
+    },
+    "help": {
+        "title": "Ajuda",
+        "faq": {
+            "title": "FAQ"
+        },
+        "tutorial": {
+            "title": "Tutoriais"
+        }
+    },
+    "forensic_academy": {
+        "title": "Academia Forense",
+        "courses": {
+            "title": "Cursos"
+        },
+        "faculty": {
+            "title": "Docentes"
+        },
+        "news": {
+            "title": "Artigos"
+        }
     }
 }

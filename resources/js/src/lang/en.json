@@ -50,9 +50,64 @@
         "acceptCondition": "I have read and agree to the Agreement Terms."
     },
 
+    "my_data": {
+        "title": "My Data"
+    },
+    "menu": {
+        "title": "Menu"
+    },
     "home": {
         "title": "Home"
+    },
+    "classrooms": {
+        "title": "Classrooms",
+        "active": {
+            "title": "Active Rooms"
+        },
+        "completed": {
+            "title": "Completed Rooms"
+        }
+    },
+    "my_certificates": {
+        "title": "My Certificates"
+    },
+    "chat": {
+        "title": "Chat"
+    },
+    "post": {
+        "title": "Posts"
+    },
+    "deposition": {
+        "title": "Depositions"
+    },
+    "financial": {
+        "title": "Financial",
+        "bill": {
+            "title": "Bills"
+        },
+        "invoice": {
+            "title": "Invoices"
+        }
+    },
+    "help": {
+        "title": "Help",
+        "faq": {
+            "title": "FAQ"
+        },
+        "tutorial": {
+            "title": "Tutorials"
+        }
+    },
+    "forensic_academy": {
+        "title": "Forensic Academy",
+        "courses": {
+            "title": "Courses"
+        },
+        "faculty": {
+            "title": "Faculty"
+        },
+        "news": {
+            "title": "News"
+        }
     }
-
-
 }
