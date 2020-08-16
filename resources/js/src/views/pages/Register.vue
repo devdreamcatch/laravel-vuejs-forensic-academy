@@ -139,7 +139,7 @@
 											<vs-input
 												class="w-full"
 												name="password"
-                    						type="password"
+                    						    type="password"
 												v-model="password"
 												v-bind:label="$t('global.field.CreatePassword')"
 												v-bind:placeholder="$t('global.field.CreatePassword')"
@@ -163,7 +163,7 @@
 									</div>
 
 									<vs-checkbox class="mt-6" v-model="isTermsConditionAccepted">{{ $t('register.acceptCondition') }}</vs-checkbox>
-									<vs-button  type="border" to="/login" class="mt-6">{{ $t('global.field.Login') }}</vs-button>
+									<vs-button  type="border" to="/login" class="mt-6">{{ $t('register.view_contract') }}</vs-button>
 									<vs-button
 										class="float-right mt-6"
 										@click="register" :disabled="!validateForm">
