@@ -1,14 +1,3 @@
-<!-- =========================================================================================
-  File Name: VerticalNavMenu.vue
-  Description: Vertical NavMenu Component
-  Component Name: VerticalNavMenu
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
-
 <template>
   <div class="parentx">
 
@@ -82,7 +71,7 @@
                 :icon="item.icon" :target="item.target"
                 :isDisabled="item.isDisabled"
                 :slug="item.slug">
-                  <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ item.name }}</span>
+                  <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ $t(item.i18n) }}</span>
                   <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
               </v-nav-menu-item>
 
