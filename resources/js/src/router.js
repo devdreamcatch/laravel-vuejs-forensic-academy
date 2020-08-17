@@ -34,15 +34,27 @@ const router = new Router({
         // =============================================================================
               {
                 path: '/',
-                name: 'home',
                 meta: {
                     middleware: auth,
                 },
                 component: () => import('./views/Home.vue')
               },
               {
-                path: '/page2',
-                name: 'page-2',
+                path: '/forensic_academy/courses',
+                meta: {
+                    middleware: auth,
+                },
+                component: () => import('./views/Page2.vue')
+              },,
+              {
+                path: '/forensic_academy/faculty',
+                meta: {
+                    middleware: auth,
+                },
+                component: () => import('./views/Page2.vue')
+              },,
+              {
+                path: '/forensic_academy/news',
                 meta: {
                     middleware: auth,
                 },
