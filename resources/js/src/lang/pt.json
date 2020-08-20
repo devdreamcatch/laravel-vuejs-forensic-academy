@@ -5,7 +5,7 @@
             "Surname": "Sobrenome",
             "CPF": "CPF",
             "Sex": "Sexo",
-            "DateOfBirth": "Data de Nascimento",
+            "date_of_birth": "Data de Nascimento",
             "Telephone": "Telefone",
             "Whatsapp": "WhatsApp",
             "Email": "E-mail",
@@ -20,7 +20,8 @@
             "Female": "Feminino",
             "Other": "Outro"
         },
-        "Error": "Error"
+        "Error": "Erro",
+        "Success": "Sucesso"
     },
 
     "message": {
@@ -53,7 +54,17 @@
         "title": "Inicio"
     },
     "my_data": {
-        "title": "Meus Dados"
+        "title": "Meus Dados",
+        "personal_data": {
+            "title": "Dados Pessoais",
+            "message_save_success": "As informações pessoais foram salvas com sucesso."
+        },
+        "change_password": {
+            "title": "Mudar senha",
+            "old_password": "Senha Antiga",
+            "new_password": "Nova senha",
+            "confirm_password": "Confirme a Senha"
+        }
     },
     "menu": {
         "title": "Menu"

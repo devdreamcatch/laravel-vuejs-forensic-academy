@@ -44,21 +44,28 @@ const router = new Router({
                 meta: {
                     middleware: auth,
                 },
-                component: () => import('./views/Page2.vue')
-              },,
+                component: () => import('./views/Home.vue')
+              },
               {
                 path: '/forensic_academy/faculty',
                 meta: {
                     middleware: auth,
                 },
-                component: () => import('./views/Page2.vue')
-              },,
+                component: () => import('./views/Home.vue')
+              },
               {
                 path: '/forensic_academy/news',
                 meta: {
                     middleware: auth,
                 },
-                component: () => import('./views/Page2.vue')
+                component: () => import('./views/Home.vue')
+              },,
+              {
+                path: '/my_data',
+                meta: {
+                    middleware: auth,
+                },
+                component: () => import('./views/my-data/MyData.vue')
               },
             ],
         },

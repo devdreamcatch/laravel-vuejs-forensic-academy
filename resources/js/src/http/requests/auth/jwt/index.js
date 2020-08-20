@@ -57,13 +57,13 @@ export default {
     })
   },
 
-  registerUser (name, surname, cpf, sex, dateOfBirth, telephone, whatsapp, email, password) {
+  registerUser (name, surname, cpf, sex, date_of_birth, telephone, whatsapp, email, password) {
     return axios.post('/api/register', {
       name: name,
       surname: surname,
       cpf: cpf,
       sex: sex,
-      date_of_birth: dateOfBirth,
+      date_of_birth: date_of_birth,
       telephone: telephone,
       whatsapp: whatsapp,
       email: email,

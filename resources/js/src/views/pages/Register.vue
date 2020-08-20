@@ -67,12 +67,12 @@
 											<span class="text-danger text-sm">{{ errors.first('sex') }}</span>
 										</div>
 										<div class="vx-col sm:w-1/4 w-full">
-											<label class="vs-input--label">{{ $t('global.field.DateOfBirth') }}</label>
+											<label class="vs-input--label">{{ $t('global.field.date_of_birth') }}</label>
       									<flat-pickr name="date_of_birth"
 												class="w-full"
-												v-model="dateOfBirth"
+												v-model="date_of_birth"
 												:config="{ dateFormat: 'Y-m-d' }" />
-											<span class="text-danger text-sm">{{ errors.first('DateOfBirth') }}</span>
+											<span class="text-danger text-sm">{{ errors.first('date_of_birth') }}</span>
 										</div>
 										<div class="vx-col sm:w-1/4 w-full">
 											<vs-input
@@ -186,7 +186,7 @@ export default {
 				{id: 3, label: this.$t('global.field.Other')}
       	],
 			sex: {id: 1, label: this.$t('global.field.Male')},
-			dateOfBirth: '',
+			date_of_birth: '',
 			telephone: '',
 			whatsapp: '',
 			email: '',
@@ -199,7 +199,7 @@ export default {
 
 	computed: {
 		validateForm () {
-			return ! this.isTermsConditionAccepted === false && !this.errors.any() && this.dateOfBirth !== ''
+			return ! this.isTermsConditionAccepted === false && !this.errors.any() && this.date_of_birth !== ''
 		}
 	},
 
@@ -232,7 +232,7 @@ export default {
 					surname: this.surname,
 					cpf: this.cpf,
 					sex: this.sex.id,
-					dateOfBirth: this.dateOfBirth,
+					date_of_birth: this.date_of_birth,
 					telephone: this.telephone,
 					whatsapp: this.whatsapp,
 					email: this.email,

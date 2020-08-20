@@ -257,9 +257,6 @@ export default {
             // Update user details
             commit('UPDATE_USER_INFO', response.data.user_info, {root: true})
 
-            // Set bearer token in axios
-            commit('SET_BEARER', response.data.token);
-
             router.push(router.currentRoute.query.to || '/').catch(()=>{});
             resolve(response)
           } else {
@@ -282,16 +279,15 @@ export default {
             resolve(response);
         })
         .catch(error => {
-            router.push('/login').catch(() => {});
             reject(error)
         });
     })
   },
   registerUserJWT ({ commit }, payload) {
-    const { name, surname, cpf, sex, dateOfBirth, telephone, whatsapp, email, password } = payload.userDetails
+    const { name, surname, cpf, sex, date_of_birth, telephone, whatsapp, email, password } = payload.userDetails
 
     return new Promise((resolve, reject) => {
-      jwt.registerUser(name, surname, cpf, sex, dateOfBirth, telephone, whatsapp, email, password)
+      jwt.registerUser(name, surname, cpf, sex, date_of_birth, telephone, whatsapp, email, password)
         .then(response => {
           // Redirect User
           router.push(router.currentRoute.query.to || '/')
