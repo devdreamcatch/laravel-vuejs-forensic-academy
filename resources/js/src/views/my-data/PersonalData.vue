@@ -56,9 +56,9 @@
             <div class="vx-col sm:w-1/3 w-full mb-2">
                 <label class="vs-input--label">{{ $t('global.field.date_of_birth') }}</label>
                 <flat-pickr name="date_of_birth"
-                            class="w-full"
-                            v-model="date_of_birth"
-                            :config="{ dateFormat: 'Y-m-d' }" />
+                    class="w-full"
+                    v-model="date_of_birth"
+                    :config="{ dateFormat: 'Y-m-d' }" />
                 <span class="text-danger text-sm">{{ errors.first('date_of_birth') }}</span>
             </div>
             <div class="vx-col sm:w-1/3 w-full mb-2">
@@ -124,7 +124,6 @@
         <!-- Save & Reset Button -->
         <div class="flex flex-wrap items-center justify-end">
             <vs-button class="ml-auto mt-2" @click="savePersonalData" :disabled="!validateForm">Save Changes</vs-button>
-<!--            <vs-button class="ml-4 mt-2" type="border" color="warning">Reset</vs-button>-->
         </div>
     </vx-card>
 </template>
