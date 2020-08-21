@@ -181,7 +181,8 @@ export default {
                     date_of_birth: this.date_of_birth,
                     telephone: this.telephone,
                     whatsapp: this.whatsapp,
-                    email: this.email
+                    email: this.email,
+                    photo: this.photo
                 }
             }
             this.$store.dispatch('mydata/savePersonalData', payload)
