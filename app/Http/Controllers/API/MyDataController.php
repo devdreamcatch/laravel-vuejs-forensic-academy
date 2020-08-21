@@ -21,7 +21,7 @@ class MyDataController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'surname' => 'required|string|max:1',
+            'surname' => 'required|string|max:191',
             'cpf' => 'required',
             'sex' => 'required|integer',
             'date_of_birth' => 'required|date',
