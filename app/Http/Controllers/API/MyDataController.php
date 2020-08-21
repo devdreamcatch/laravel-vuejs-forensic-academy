@@ -33,6 +33,11 @@ class MyDataController extends Controller
         if ($validator->fails()) {
             return new JsonResponse($validator->errors(), 422);
         }
+        
+        $photoPath = null;
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photos', 'public');
+        }
 
         $user->update([
             'name' => $request->name,
@@ -42,7 +47,8 @@ class MyDataController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'telephone' => $request->telephone,
             'whatsapp' => $request->whatsapp,
-            'email' => $request->email
+            'email' => $request->email,
+            'photo' => $photoPath
         ]);
 
         return new JsonResponse($user, 201);
