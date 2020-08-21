@@ -20,15 +20,14 @@ class MyDataController extends Controller
     public function savePersonalData(User $user, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'name' => 'required|string|max:191',
-            // 'surname' => 'required|string|max:191',
-            // 'cpf' => 'required',
-            // 'sex' => 'required|integer',
-            // 'date_of_birth' => 'required|date',
-            // 'telephone' => 'required',
-            // 'whatsapp' => 'required',
+            'name' => 'required|string|max:191',
+            'surname' => 'required|string|max:1',
+            'cpf' => 'required',
+            'sex' => 'required|integer',
+            'date_of_birth' => 'required|date',
+            'telephone' => 'required',
+            'whatsapp' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            // 'password' => 'required',
         ]);
 
         if ($validator->fails()) {
