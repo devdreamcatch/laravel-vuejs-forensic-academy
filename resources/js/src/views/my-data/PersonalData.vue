@@ -187,12 +187,14 @@ export default {
             .catch(error => {
                 this.$vs.loading.close()
                 if (error.response.status === 422) {
-                    this.errors.add({
-                        scope: null,
-                        field: 'email',
-                        rule: 'required',
-                        msg: this.$t('message.emailAlreadyTaken')
-                    })
+                    for (let item in error.response.data) {
+                        this.errors.add({
+                            scope: null,
+                            field: item,
+                            rule: 'required',
+                            msg: error.response.data[item][0]
+                        })
+                    }
                 }
             })
         }
