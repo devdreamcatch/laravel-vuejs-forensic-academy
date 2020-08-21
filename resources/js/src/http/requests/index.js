@@ -1,2 +1,1 @@
 import './auth'
-import './mydata'
