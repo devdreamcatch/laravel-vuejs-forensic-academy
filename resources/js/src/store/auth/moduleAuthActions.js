@@ -3,37 +3,6 @@ import store from '../store.js'
 import router from '@/router'
 
 export default {
-  init () {
-    axios.interceptors.response.use(function (response) {
-      return response
-    }, function (error) {
-      // const { config, response: { status } } = error
-      const { config, response } = error
-      const originalRequest = config
-
-      // if (status === 401) {
-      if (response && response.status === 401) {
-        if (!isAlreadyFetchingAccessToken) {
-          isAlreadyFetchingAccessToken = true
-          store.dispatch('auth/fetchAccessToken')
-            .then((access_token) => {
-              isAlreadyFetchingAccessToken = false
-              onAccessTokenFetched(access_token)
-            })
-        }
-
-        const retryOriginalRequest = new Promise((resolve) => {
-          addSubscriber(access_token => {
-            originalRequest.headers.Authorization = `Bearer ${access_token}`
-            resolve(axios(originalRequest))
-          })
-        })
-        return retryOriginalRequest
-      }
-      return Promise.reject(error)
-    })
-  },
-
   // JWT login
   loginJWT ({ commit }, payload) {
     const { email, password } = payload.userDetails
@@ -49,6 +18,7 @@ export default {
         if (response.data.user_info) {
           // Navigate User to homepage
 
+          window.localStorage.clear();
           // Set accessToken
           localStorage.setItem('accessToken', response.data.token)
 
@@ -70,8 +40,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post('/api/logout')
       .then(response => {
-        localStorage.removeItem('accessToken')
-        localStorage.removeItem('userInfo')
+        window.localStorage.clear();
         router.push('/login').catch(() => {});
         resolve(response);
       })
