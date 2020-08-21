@@ -33,6 +33,7 @@ class User extends Authenticatable
         'whatsapp',
         'email',
         'password',
+        'photo'
     ];
 
     /**
