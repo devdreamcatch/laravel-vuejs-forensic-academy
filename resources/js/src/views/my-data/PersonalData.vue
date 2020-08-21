@@ -2,10 +2,21 @@
     <vx-card no-shadow>
         <!-- Img Row -->
         <div class="flex flex-wrap items-center mb-base">
-            <vs-avatar :src="activeUserInfo.photoURL" size="70px" class="mr-4 mb-4" />
+            <vs-avatar :src="photoURL" size="70px" class="mr-4 mb-4" />
             <div>
-                <vs-button class="mr-4 sm:mb-0 mb-2">Upload photo</vs-button>
-                <vs-button type="border" color="danger">Remove</vs-button>
+                <input
+                    type="file"
+                    name="photo"
+                    ref="photo"
+                    @change="previewPhoto"
+                    hidden
+                    accept="image/jpeg, image/png" />
+                <vs-button
+                    class="mr-4 sm:mb-0 mb-2"
+                    @click="$refs.photo.click()">
+                    Upload photo
+                </vs-button>
+                <vs-button type="border" color="danger" @click="removePhoto">Remove</vs-button>
                 <p class="text-sm mt-2">Allowed JPG, GIF or PNG. Max size of 800kB</p>
             </div>
         </div>
@@ -143,7 +154,9 @@ export default {
                 {id: 2, label: this.$t('global.field.Female')},
                 {id: 3, label: this.$t('global.field.Other')}
             ],
-            sex: {id: 1, label: this.$t('global.field.Male')}
+            sex: {id: 1, label: this.$t('global.field.Male')},
+            photoURL: this.$store.state.AppActiveUser.photo,
+            photo: null
         }
     },
     computed: {
@@ -155,6 +168,7 @@ export default {
         }
     },
     methods: {
+        // Save personal data
         savePersonalData () {
             if (!this.validateForm) return
             this.$vs.loading()
@@ -197,6 +211,19 @@ export default {
                     }
                 }
             })
+        },
+
+        // Preview photo as avatar
+        previewPhoto (event) {
+            this.photo = this.$refs.photo.files[0]
+            this.photoURL = URL.createObjectURL(this.photo)
+        },
+
+        // Reset photo
+        removePhoto () {
+            this.photoURL = ''
+            this.photo = null
+            this.$refs.photo.value = null
         }
     }
 }
