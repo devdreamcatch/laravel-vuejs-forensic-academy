@@ -140,7 +140,6 @@ export default {
         flatPickr
     },
     data () {
-        console.log(localStorage)
         return {
             name: this.$store.state.AppActiveUser.name,
             surname: this.$store.state.AppActiveUser.surname,
