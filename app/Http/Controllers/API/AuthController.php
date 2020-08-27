@@ -59,9 +59,9 @@ class AuthController extends Controller
     public function resetPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'current_password' => ['required', new MatchOldPassword],
+            'old_password' => ['required', new MatchOldPassword],
             'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
+            'confirm_password' => ['same:new_password'],
         ]);
 
         if ($validator->fails()) {
