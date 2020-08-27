@@ -63,7 +63,8 @@
             "title": "Mudar senha",
             "old_password": "Senha Antiga",
             "new_password": "Nova senha",
-            "confirm_password": "Confirme a Senha"
+            "confirm_password": "Confirme a Senha",
+            "message_save_success": "A senha foi alterada com sucesso."
         }
     },
     "menu": {
