@@ -155,7 +155,7 @@ export default {
                 {id: 3, label: this.$t('global.field.Other')}
             ],
             sex: {id: 1, label: this.$t('global.field.Male')},
-            photoURL: this.$store.state.AppActiveUser.photo,
+            photoURL: '/storage/' + this.$store.state.AppActiveUser.photo,
             photo: null
         }
     },
