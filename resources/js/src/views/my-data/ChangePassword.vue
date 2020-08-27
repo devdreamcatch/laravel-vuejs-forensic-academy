@@ -1,6 +1,5 @@
 <template>
   <vx-card no-shadow>
-
     <vs-input class="w-full" name="old password" v-bind:label="$t('my_data.change_password.old_password')" v-model="old_password" v-validate="'required'"
               data-vv-validate-on="blur" />
       <span class="text-danger text-sm">{{ errors.first('old password') }}</span>
@@ -20,17 +19,49 @@
 
 <script>
 export default {
-  data () {
-    return {
-        old_password: '',
-        new_password: '',
-        confirm_password: ''
+    data () {
+        return {
+            old_password: '',
+            new_password: '',
+            confirm_password: ''
+        }
+    },
+    methods: {
+        // Reset password
+        resetPassword () {
+            if (!this.validateForm) return
+            this.$vs.loading()
+            const payload = {
+                old_password: this.old_password,
+                new_password: this.new_password,
+                confirm_password: this.confirm_password,
+            }
+            this.$store.dispatch('mydata/resetPassword', payload)
+                .then(() => {
+                    this.$vs.loading.close()
+                    // this.$vs.notify({
+                    //     title: this.$t('global.Success'),
+                    //     text: this.$t('my_data.personal_data.message_save_success'),
+                    //     iconPack: 'feather',
+                    //     icon: 'icon-check',
+                    //     position: 'top-right',
+                    //     color: 'success'
+                    // })
+                })
+                .catch(error => {
+                    this.$vs.loading.close()
+                    if (error.response.status === 422) {
+                        for (let item in error.response.data) {
+                            this.errors.add({
+                                scope: null,
+                                field: item,
+                                rule: 'required',
+                                msg: error.response.data[item][0]
+                            })
+                        }
+                    }
+                })
+        }
     }
-  },
-  computed: {
-    activeUserInfo () {
-      return this.$store.state.AppActiveUser
-    }
-  }
 }
 </script>
