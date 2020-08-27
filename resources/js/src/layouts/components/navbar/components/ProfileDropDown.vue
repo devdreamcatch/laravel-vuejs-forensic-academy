@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     logout () {
-        this.$store.dispatch('auth/logoutJWT', {});
+      this.$store.dispatch('auth/logoutJWT', {});
     }
   }
 }
