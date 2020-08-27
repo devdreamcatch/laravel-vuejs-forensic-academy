@@ -5,7 +5,7 @@ export default {
     savePersonalData ({ commit }, payload) {
         const { id, name, surname, cpf, sex, date_of_birth, telephone, whatsapp, email, photo } = payload.userDetails
         let formData = new FormData()
-        
+
         formData.append('name', name)
         formData.append('surname', surname)
         formData.append('cpf', cpf)
@@ -32,6 +32,20 @@ export default {
                 resolve(response)
             })
             .catch(error => { reject(error) })
+        })
+    },
+    resetPassword ({ commit }, payload) {
+        const { old_password, new_password, confirm_password } = payload
+        return new Promise((resolve, reject) => {
+            axios.post('/api/resetPassword', {
+                old_password: old_password,
+                new_password: new_password,
+                confirm_password: confirm_password
+            }).then(response => {
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
         })
     }
 }
