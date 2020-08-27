@@ -2,10 +2,21 @@
     <vx-card no-shadow>
         <!-- Img Row -->
         <div class="flex flex-wrap items-center mb-base">
-            <vs-avatar :src="activeUserInfo.photoURL" size="70px" class="mr-4 mb-4" />
+            <vs-avatar :src="photoURL" size="70px" class="mr-4 mb-4" />
             <div>
-                <vs-button class="mr-4 sm:mb-0 mb-2">Upload photo</vs-button>
-                <vs-button type="border" color="danger">Remove</vs-button>
+                <input
+                    type="file"
+                    name="photo"
+                    ref="photo"
+                    @change="previewPhoto"
+                    hidden
+                    accept="image/jpeg, image/png" />
+                <vs-button
+                    class="mr-4 sm:mb-0 mb-2"
+                    @click="$refs.photo.click()">
+                    Upload photo
+                </vs-button>
+                <vs-button type="border" color="danger" @click="removePhoto">Remove</vs-button>
                 <p class="text-sm mt-2">Allowed JPG, GIF or PNG. Max size of 800kB</p>
             </div>
         </div>
@@ -45,9 +56,9 @@
             <div class="vx-col sm:w-1/3 w-full mb-2">
                 <label class="vs-input--label">{{ $t('global.field.date_of_birth') }}</label>
                 <flat-pickr name="date_of_birth"
-                            class="w-full"
-                            v-model="date_of_birth"
-                            :config="{ dateFormat: 'Y-m-d' }" />
+                    class="w-full"
+                    v-model="date_of_birth"
+                    :config="{ dateFormat: 'Y-m-d' }" />
                 <span class="text-danger text-sm">{{ errors.first('date_of_birth') }}</span>
             </div>
             <div class="vx-col sm:w-1/3 w-full mb-2">
@@ -113,7 +124,6 @@
         <!-- Save & Reset Button -->
         <div class="flex flex-wrap items-center justify-end">
             <vs-button class="ml-auto mt-2" @click="savePersonalData" :disabled="!validateForm">Save Changes</vs-button>
-<!--            <vs-button class="ml-4 mt-2" type="border" color="warning">Reset</vs-button>-->
         </div>
     </vx-card>
 </template>
@@ -130,6 +140,7 @@ export default {
         flatPickr
     },
     data () {
+        console.log(localStorage)
         return {
             name: this.$store.state.AppActiveUser.name,
             surname: this.$store.state.AppActiveUser.surname,
@@ -143,7 +154,9 @@ export default {
                 {id: 2, label: this.$t('global.field.Female')},
                 {id: 3, label: this.$t('global.field.Other')}
             ],
-            sex: {id: 1, label: this.$t('global.field.Male')}
+            sex: {id: 1, label: this.$t('global.field.Male')},
+            photoURL: this.$store.state.AppActiveUser.photo,
+            photo: null
         }
     },
     computed: {
@@ -155,6 +168,7 @@ export default {
         }
     },
     methods: {
+        // Save personal data
         savePersonalData () {
             if (!this.validateForm) return
             this.$vs.loading()
@@ -169,7 +183,7 @@ export default {
                     telephone: this.telephone,
                     whatsapp: this.whatsapp,
                     email: this.email,
-                    password: this.password,
+                    photo: this.photo
                 }
             }
             this.$store.dispatch('mydata/savePersonalData', payload)
@@ -197,6 +211,19 @@ export default {
                     }
                 }
             })
+        },
+
+        // Preview photo as avatar
+        previewPhoto (event) {
+            this.photo = this.$refs.photo.files[0]
+            this.photoURL = URL.createObjectURL(this.photo)
+        },
+
+        // Reset photo
+        removePhoto () {
+            this.photoURL = ''
+            this.photo = null
+            this.$refs.photo.value = null
         }
     }
 }
