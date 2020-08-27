@@ -37,7 +37,7 @@ export default {
     resetPassword ({ commit }, payload) {
         const { old_password, new_password, confirm_password } = payload
         return new Promise((resolve, reject) => {
-            axios.post('/resetPassword', {
+            axios.post('/api/resetPassword', {
                 old_password: old_password,
                 new_password: new_password,
                 confirm_password: confirm_password
