@@ -1,14 +1,3 @@
-    <!-- =========================================================================================
-    File Name: ChangeTimeDurationDropdown.vue
-    Description: Change duration dropdown component
-    ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
-<!-- :class="data.class" -->
-
 <template functional>
     <vs-dropdown vs-trigger-click class="cursor-pointer" :class="data.staticClass">
         <small class="flex cursor-pointer">

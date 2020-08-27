@@ -38,15 +38,21 @@ export default {
   // JWT logout
   logoutJWT ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      axios.post('/api/logout')
-      .then(response => {
-        window.localStorage.clear();
-        router.push('/login').catch(() => {});
-        resolve(response);
-      })
-      .catch(error => {
-        reject(error)
-      });
+        if (!localStorage.getItem(`accessToken`) || !localStorage.getItem(`userInfo`)) {
+            window.localStorage.clear();
+            return router.push({ name: `login` });
+        }
+        axios.post('/api/logout')
+            .then(response => {
+                window.localStorage.clear()
+                router.push('/login').catch(() => {})
+                resolve(response);
+            })
+            .catch(error => {
+                window.localStorage.clear();
+                router.push({ name: `login` })
+                reject(error)
+            })
     })
   },
 
