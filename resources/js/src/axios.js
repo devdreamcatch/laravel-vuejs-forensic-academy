@@ -8,7 +8,8 @@ export default axios.create({
     // You can add your headers here
     transformRequest: [function (data, headers) {
         headers['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`
-        return JSON.stringify(data)
+        return data;
+        // return JSON.stringify(data)
     }],
     headers: {
         'Content-Type': 'application/json'
