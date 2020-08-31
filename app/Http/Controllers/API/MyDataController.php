@@ -8,12 +8,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
+use File;
 
 class MyDataController extends Controller
 {
     /**
-     * user register
-     * @param \Illuminate\Http\Request $request
+     * User personal data save
+     * @param \App\Models\User  $user
+     * @param \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -52,6 +54,26 @@ class MyDataController extends Controller
         ]);
 
         return new JsonResponse($user, 201);
+    }
+
+    /**
+     * User avatar remove
+     * @param \App\Models\User  $user
+     * @param \Illuminate\Http\Request  $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function removePhoto(User $user, Request $request) {
+        $photoPath = public_path("/storage/$user->photo");  // get previous image from folder
+        if (File::exists($photoPath) && $user->photo != null) { // unlink or remove previous image from folder
+            unlink($photoPath);
+        }
+
+        $user->update([
+            'photo' => null
+        ]);
+
+        return new JsonResponse($user, 202);
     }
 
 }
