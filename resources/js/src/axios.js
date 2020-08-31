@@ -1,7 +1,7 @@
 // axios
 import axios from 'axios'
 
-const baseURL = 'http://127.0.0.1:8000'
+const baseURL = 'http://localhost:8082'
 
 const instance = axios.create({
     baseURL
@@ -19,4 +19,4 @@ instance.interceptors.request.use(
         Promise.reject(error)
     })
 
-export default instance
+export default instance;
