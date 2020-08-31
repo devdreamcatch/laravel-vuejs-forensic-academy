@@ -2,7 +2,7 @@
     <vx-card no-shadow>
         <!-- Img Row -->
         <div class="flex flex-wrap items-center mb-base">
-            <vs-avatar :src="photoURL" size="70px" class="mr-4 mb-4" />
+            <vs-avatar :src="'/storage/' + activeUserInfo.photo" size="70px" class="mr-4 mb-4" />
             <div>
                 <input
                     type="file"
@@ -221,9 +221,40 @@ export default {
 
         // Reset photo
         removePhoto () {
-            this.photoURL = ''
-            this.photo = null
-            this.$refs.photo.value = null
+            // this.photoURL = ''
+            // this.photo = null
+            // this.$refs.photo.value = null
+            const payload = {
+                userDetails: {
+                    id: this.$store.state.AppActiveUser.id,
+                }
+            }
+            this.$store.dispatch('mydata/removePhoto', payload)
+            .then(() => {
+                this.$vs.loading.close()
+                this.$vs.notify({
+                    title: this.$t('global.Success'),
+                    text: this.$t('my_data.personal_data.message_save_success'),
+                    iconPack: 'feather',
+                    icon: 'icon-check',
+                    position: 'top-right',
+                    color: 'success'
+                })
+                console.log(this.activeUserInfo);
+            })
+            .catch(error => {
+                this.$vs.loading.close()
+                if (error.response.status === 422) {
+                    for (let item in error.response.data) {
+                        this.errors.add({
+                            scope: null,
+                            field: item,
+                            rule: 'required',
+                            msg: error.response.data[item][0]
+                        })
+                    }
+                }
+            })
         }
     }
 }
