@@ -63,6 +63,9 @@
             "new_password": "New Password",
             "confirm_password": "Confirm Password",
             "message_save_success": "Password was changed successfully."
+        },
+        "social_network": {
+            "title": "Social Network"
         }
     },
     "menu": {
