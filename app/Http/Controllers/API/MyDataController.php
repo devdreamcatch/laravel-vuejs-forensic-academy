@@ -36,7 +36,7 @@ class MyDataController extends Controller
             return new JsonResponse($validator->errors(), 422);
         }
         
-        $photoPath = null;
+        $photoPath = 'none';
         if ($request->hasFile('photo')) {
             $photoPath = $request->file('photo')->store('photos', 'public');
         }
@@ -53,7 +53,7 @@ class MyDataController extends Controller
             'photo' => $photoPath
         ]);
 
-        return new JsonResponse($user, 201);
+        return new JsonResponse($user, 202);
     }
 
     /**
@@ -65,12 +65,12 @@ class MyDataController extends Controller
      */
     public function removePhoto(User $user, Request $request) {
         $photoPath = public_path("/storage/$user->photo");  // get previous image from folder
-        if (File::exists($photoPath) && $user->photo != null) { // unlink or remove previous image from folder
+        if (File::exists($photoPath) && $user->photo != 'none') { // unlink or remove previous image from folder
             unlink($photoPath);
         }
 
         $user->update([
-            'photo' => null
+            'photo' => 'none'
         ]);
 
         return new JsonResponse($user, 202);
