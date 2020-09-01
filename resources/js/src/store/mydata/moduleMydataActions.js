@@ -2,8 +2,10 @@
 import axios from '@/axios'
 
 export default {
+    // Save persional data
     savePersonalData ({ commit }, payload) {
         const { id, name, surname, cpf, sex, date_of_birth, telephone, whatsapp, email, photo } = payload.userDetails
+
         let formData = new FormData()
 
         formData.append('name', name)
@@ -31,7 +33,26 @@ export default {
 
                 resolve(response)
             })
-            .catch(error => { reject(error) })
+            .catch(error => {
+                reject(error)
+            })
+        })
+    },
+
+    // Remove avatar
+    removePhoto ({ commit }, payload) {
+        const { id } = payload.userDetails
+
+        return new Promise((resolve, reject) => {
+            axios.delete(`/api/removePhoto/${id}`)
+            .then(response => {
+                commit('UPDATE_USER_INFO', response.data, {root: true})
+
+                resolve(response)
+            })
+            .catch(error => {
+                reject(error)
+            })
         })
     },
     resetPassword ({ commit }, payload) {

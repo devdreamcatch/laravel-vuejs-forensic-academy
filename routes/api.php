@@ -31,5 +31,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::POST('/resetPassword', 'API\AuthController@resetPassword');
     Route::PUT('/profile/{user}', 'API\AuthController@updateProfile');
     Route::GET('/profile/{user}', 'API\AuthController@showProfile');
+
     Route::POST('/savePersonalData/{user}', 'API\MyDataController@savePersonalData');
+    Route::DELETE('/removePhoto/{user}', 'API\MyDataController@removePhoto');
 });
