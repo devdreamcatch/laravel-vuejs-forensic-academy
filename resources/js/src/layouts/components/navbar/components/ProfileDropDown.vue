@@ -1,15 +1,16 @@
 <template>
-  <div class="the-navbar__user-meta flex items-center" v-if="activeUserInfo.name">
+  <div class="the-navbar__user-meta flex items-center">
 
     <div class="text-right leading-tight hidden sm:block">
-      <p class="font-semibold">{{ activeUserInfo.name }}</p>
+      <p v-if="activeUserInfo.name && activeUserInfo.surname" class="font-semibold">{{ activeUserInfo.name }} {{ activeUserInfo.surname }}</p>
+      <p v-else class="font-semibold">{{ activeUserInfo.displayName }}</p>
       <small>Available</small>
     </div>
 
     <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
-
       <div class="con-img ml-3">
-        <img v-if="activeUserInfo.photo" key="onlineImg" :src="'/storage/' + activeUserInfo.photo" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
+        <img v-if="activeUserInfo.photo != 'none'" key="onlineImg" :src="'/storage/' + activeUserInfo.photo" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
+        <img v-else key="onlineImg" :src="activeUserInfo.photoURL" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
       </div>
 
       <vs-dropdown-menu class="vx-navbar-dropdown">
