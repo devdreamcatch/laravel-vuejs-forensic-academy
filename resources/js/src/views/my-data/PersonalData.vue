@@ -16,11 +16,10 @@
                     @click="$refs.photo.click()">
                     Upload photo
                 </vs-button>
-                <vs-button type="border" color="danger" @click="removePhoto">Remove</vs-button>
+                <vs-button type="border" color="danger" @click="removePhoto" :disabled="!isPhoto">Remove</vs-button>
                 <p class="text-sm mt-2">Allowed JPG, GIF or PNG. Max size of 800kB</p>
             </div>
         </div>
-
         <!-- Info -->
         <div class="vx-row">
             <div class="vx-col sm:w-1/2 w-full mb-2">
@@ -140,7 +139,6 @@ export default {
         flatPickr
     },
     data () {
-        console.log(localStorage)
         return {
             name: this.$store.state.AppActiveUser.name,
             surname: this.$store.state.AppActiveUser.surname,
@@ -154,8 +152,8 @@ export default {
                 {id: 2, label: this.$t('global.field.Female')},
                 {id: 3, label: this.$t('global.field.Other')}
             ],
-            sex: {id: 1, label: this.$t('global.field.Male')},
-            photoURL: this.$store.state.AppActiveUser.photo,
+            sex: {id: this.$store.state.AppActiveUser.sex, label: this.$t('global.field.Female')},
+            photoURL: this.$store.state.AppActiveUser.photo == 'none' ? this.$store.state.AppActiveUser.photoURL : '/storage/' + this.$store.state.AppActiveUser.photo,
             photo: null
         }
     },
@@ -163,8 +161,13 @@ export default {
         activeUserInfo () {
             return this.$store.state.AppActiveUser
         },
+
         validateForm () {
             return !this.errors.any() && this.date_of_birth !== ''
+        },
+        
+        isPhoto () {
+            return this.$store.state.AppActiveUser.photo !== 'none'
         }
     },
     methods: {
@@ -188,6 +191,7 @@ export default {
             }
             this.$store.dispatch('mydata/savePersonalData', payload)
             .then(() => {
+                console.log(this.photoURL)
                 this.$vs.loading.close()
                 this.$vs.notify({
                     title: this.$t('global.Success'),
@@ -221,9 +225,37 @@ export default {
 
         // Reset photo
         removePhoto () {
-            this.photoURL = ''
-            this.photo = null
-            this.$refs.photo.value = null
+            const payload = {
+                userDetails: {
+                    id: this.$store.state.AppActiveUser.id,
+                }
+            }
+            this.$store.dispatch('mydata/removePhoto', payload)
+            .then(() => {
+                this.photoURL = this.activeUserInfo.photoURL
+                this.$vs.loading.close()
+                this.$vs.notify({
+                    title: this.$t('global.Success'),
+                    text: this.$t('my_data.personal_data.message_save_success'),
+                    iconPack: 'feather',
+                    icon: 'icon-check',
+                    position: 'top-right',
+                    color: 'success'
+                })
+            })
+            .catch(error => {
+                this.$vs.loading.close()
+                if (error.response.status === 422) {
+                    for (let item in error.response.data) {
+                        this.errors.add({
+                            scope: null,
+                            field: item,
+                            rule: 'required',
+                            msg: error.response.data[item][0]
+                        })
+                    }
+                }
+            })
         }
     }
 }
