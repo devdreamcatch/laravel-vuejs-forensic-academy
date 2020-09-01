@@ -61,7 +61,8 @@
             "title": "Change Password",
             "old_password": "Old Password",
             "new_password": "New Password",
-            "confirm_password": "Confirm Password"
+            "confirm_password": "Confirm Password",
+            "message_save_success": "Password was changed successfully."
         }
     },
     "menu": {
