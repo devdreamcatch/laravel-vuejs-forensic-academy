@@ -29,7 +29,7 @@
             v-validate="'required|min:6'"
             data-vv-validate-on="blur" />
         <span class="text-danger text-sm">{{ errors.first('confirm_password') }}</span>
-        <div class="flex flex-wrap items-center justify-end">
+        <div class="flex flex-wrap items-center justify-end mt-4">
             <vs-button
                 class="ml-auto mt-2"
                 @click="resetPassword"
