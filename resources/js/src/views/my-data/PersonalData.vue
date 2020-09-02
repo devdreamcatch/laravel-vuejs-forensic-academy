@@ -121,7 +121,7 @@
         </vs-alert>
 
         <!-- Save & Reset Button -->
-        <div class="flex flex-wrap items-center justify-end mt-4">
+        <div class="flex flex-wrap items-center justify-end mt-base">
             <vs-button class="ml-auto mt-2" @click="savePersonalData" :disabled="!validateForm">Save Changes</vs-button>
         </div>
     </vx-card>
