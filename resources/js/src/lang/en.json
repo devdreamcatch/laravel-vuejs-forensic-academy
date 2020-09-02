@@ -55,6 +55,8 @@
         "title": "My Data",
         "personal_data": {
             "title": "Personal Data",
+            "resend_confirm": "Resend Confirmation",
+            "email_not_confirm": "Your email has not been confirmed. Please check your email inbox.",
             "message_save_success": "Personal Information was saved successfully."
         },
         "change_password": {

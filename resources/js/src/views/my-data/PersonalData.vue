@@ -115,14 +115,14 @@
 
         <vs-alert icon-pack="feather" icon="icon-info" class="h-full my-4" color="warning">
             <span>
-                Your email has not been confirmed. Please check your email inbox.  {{ email}} <br>
-                <a href="#" class="hover:underline">Resend Confirmation</a>
+                {{ $t('my_data.personal_data.email_not_confirm') }}  {{ email}} <br>
+                <a href="#" class="hover:underline">{{ $t('my_data.personal_data.resend_confirm') }}</a>
             </span>
         </vs-alert>
 
         <!-- Save & Reset Button -->
-        <div class="flex flex-wrap items-center justify-end">
-            <vs-button class="ml-auto mt-2" @click="savePersonalData" :disabled="!validateForm">Save Changes</vs-button>
+        <div class="flex flex-wrap items-center justify-end mt-base">
+            <vs-button class="ml-auto mt-2" @click="savePersonalData" :disabled="!validateForm">{{ $t('global.button.save_change') }}</vs-button>
         </div>
     </vx-card>
 </template>

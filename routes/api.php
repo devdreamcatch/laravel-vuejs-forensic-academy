@@ -32,6 +32,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::PUT('/profile/{user}', 'API\AuthController@updateProfile');
     Route::GET('/profile/{user}', 'API\AuthController@showProfile');
 
+    // My data
     Route::POST('/savePersonalData/{user}', 'API\MyDataController@savePersonalData');
     Route::DELETE('/removePhoto/{user}', 'API\MyDataController@removePhoto');
 });

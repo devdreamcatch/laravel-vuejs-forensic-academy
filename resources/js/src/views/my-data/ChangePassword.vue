@@ -31,7 +31,7 @@
         <span class="text-danger text-sm">{{ errors.first('confirm_password') }}</span>
         <div class="flex flex-wrap items-center justify-end">
             <vs-button
-                class="ml-auto mt-2"
+                class="ml-auto mt-base"
                 @click="resetPassword"
                 :disabled="!validateForm">
                 {{ $t("my_data.change_password.title") }}
