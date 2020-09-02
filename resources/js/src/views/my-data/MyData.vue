@@ -11,24 +11,17 @@
                 <change-password />
             </div>
         </vs-tab>
-        <vs-tab icon-pack="feather" icon="icon-link" :label="!isSmallerScreen ? $t('my_data.social_network.title') : ''">
-            <div class="tab-change-pwd md:ml-4 md:mt-0 mt-4 ml-0">
-                <social-network />
-            </div>
-        </vs-tab>
     </vs-tabs>
 </template>
 
 <script>
 import PersonalData from './PersonalData.vue'
 import ChangePassword from './ChangePassword.vue'
-import SocialNetwork from './SocialNetwork.vue'
 
 export default {
     components: {
         PersonalData,
-        ChangePassword,
-        SocialNetwork
+        ChangePassword
     },
     data () {
         return {
