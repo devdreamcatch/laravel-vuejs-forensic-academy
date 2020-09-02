@@ -85,10 +85,10 @@ class MyDataController extends Controller
      */
     public function saveSocial(Request $request) {
         $validator = Validator::make($request->all(), [
-            'facebook' => 'url',
-            'instagram' => 'url',
-            'linkedin' => 'url',
-            'twitter' => 'url',
+            'facebook' => 'active_url',
+            'instagram' => 'active_url',
+            'linkedin' => 'active_url',
+            'twitter' => 'active_url',
         ]);
 
         if ($validator->fails()) {
