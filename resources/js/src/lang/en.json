@@ -21,11 +21,7 @@
             "Other": "Other"
         },
         "Error": "Error",
-        "Success": "Success",
-        "button": {
-            "save_change": "Save Changes",
-            "reset": "Reset"
-        }
+        "Success": "Success"
     },
 
     "message": {
@@ -67,18 +63,6 @@
             "new_password": "New Password",
             "confirm_password": "Confirm Password",
             "message_save_success": "Password was changed successfully."
-        },
-        "social_network": {
-            "title": "Social Network",
-            "facebook": "Facebook",
-            "instagram": "Instagram",
-            "linkedin": "Linkedin",
-            "twitter": "Twitter",
-            "facebook_place": "https://www.facebook.com/username",
-            "instagram_place": "https://www.instagram.com/username",
-            "linkedin_place": "https://www.linkedin.com/username",
-            "twitter_place": "https://www.twitter.com/username",
-            "message_save_success": "Social networks was saved successfully."
         }
     },
     "menu": {
