@@ -84,6 +84,17 @@ class MyDataController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function saveSocial(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'facebook' => 'url',
+            'instagram' => 'url',
+            'linkedin' => 'url',
+            'twitter' => 'url',
+        ]);
+
+        if ($validator->fails()) {
+            return new JsonResponse($validator->errors(), 422);
+        }
+
         $user = User::findOrfail($request->user()->id);
 
         $user->update([
