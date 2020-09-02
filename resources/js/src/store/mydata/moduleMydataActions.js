@@ -68,5 +68,25 @@ export default {
                 reject(error)
             })
         })
+    },
+
+    // Save social
+    saveSocial ({ commit }, payload) {
+        const { facebook, instagram, linkedin, twitter } = payload.userDetails
+
+        return new Promise((resolve, reject) => {
+            axios.post('/api/saveSocial', {
+                facebook: facebook,
+                instagram: instagram,
+                linkedin: linkedin,
+                twitter: twitter
+            }).then(response => {
+                commit('UPDATE_USER_INFO', response.data, {root: true})
+
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
+        })
     }
 }
