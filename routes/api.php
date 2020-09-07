@@ -35,4 +35,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // My data
     Route::POST('/savePersonalData/{user}', 'API\MyDataController@savePersonalData');
     Route::DELETE('/removePhoto/{user}', 'API\MyDataController@removePhoto');
+    Route::POST('/saveSocial', 'API\MyDataController@saveSocial');
 });
